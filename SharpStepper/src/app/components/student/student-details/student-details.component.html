@@ -1,0 +1,24 @@
+<app-header></app-header>
+<div *ngIf="student" class="student-details">
+    <h2>student Details</h2>
+    <dl>
+      <dt>ID:</dt>
+      <dd>{{ student.id }}</dd>
+      <dt>firstName:</dt>
+      <dd>{{ student.firstName }}</dd>
+      <dt>LastName:</dt>
+      <dd>{{ student.lastName }}</dd>
+      <dt>Email:</dt>
+      <dd>{{ student.email }}</dd>
+      <dt>Phone:</dt>
+      <dd>{{ student.mobile }}</dd>
+      <dt>Date of birth :</dt>
+      <dd>{{ student.dob }}</dd>
+      <dt>Gender:</dt>
+      <dd>{{ student.gender }}</dd>
+    </dl>
+    <button *ngIf="isAdmin || isStudent" (click)="editstudent(student.id)">Edit</button>    
+    <button *ngIf="isAdmin || isStudent" (click)="deleteStudent(student.id)">Delete</button>
+    <button (click)="goBack()">Back to List</button>
+  </div>
+<app-footer></app-footer>

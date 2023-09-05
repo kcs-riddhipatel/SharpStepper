@@ -1,0 +1,23 @@
+.student-details {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .student-details dl {
+    display: grid;
+    grid-template-columns: max-content auto;
+    grid-gap: 10px;
+  }
+  
+  .student-details button {
+    margin-top: 10px;
+    cursor: pointer;
+    margin-right: 4px;
+    border: none;
+    border-radius: 30px;
+    padding: 5px 20px;
+  }
+  

@@ -1,0 +1,49 @@
+.admission{
+    background-color: red;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+.student-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+  }
+  
+  .student-table th,
+  .student-table td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ccc;
+    text-align: center;
+  }
+   tr:hover {
+    background-color: #D6EEEE;
+  }
+  .student-table th {
+    background-color: #f0f0f0;
+
+  }  
+ .student-table td button {
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-right: 5px;
+    background: none;
+  } 
+  
+  .student-table td button:hover {
+    background-color: white;
+  } 
+
+.emplist-container {
+  margin-top: 20px;
+}
+.btn{
+  background-color: skyblue;
+}
+.btn:hover{
+  background-color: blue;
+  color: white;
+}
