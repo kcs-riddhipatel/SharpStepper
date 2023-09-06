@@ -13,9 +13,7 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) {}
 
     onSubmit() {
-      debugger
       this.authService.login(this.email, this.password).subscribe(() => {
-        debugger
       this.router.navigate(['/home']); 
     });
   }

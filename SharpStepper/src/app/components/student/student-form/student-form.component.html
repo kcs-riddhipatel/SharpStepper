@@ -2,6 +2,7 @@
 <div class="student-form">
     <h2>{{ student.id ? 'Edit Student' : 'Add Student' }}</h2>
     <form (ngSubmit)="onSaveStudent()">
+      <input type="hidden" id="id"  [(ngModel)]="student.id" name="id">
       <label for="fname">FirstName:<span class="field_required"> *</span></label>
       <input type="text" id="fname" [(ngModel)]="student.firstName" name="fname" required>
       <span *ngIf="!student.firstName && formSubmitted" style="color: red;">FirstName is required.</span>
@@ -61,6 +62,9 @@
       </div>
       <span *ngIf="!student.gender && formSubmitted" style="color: red;">Gender is required.</span>
 
+      <label for="profileImage">Profile Image:</label>
+      <input type="file" id="profileImage"  [(ngModel)]="student.profileImage" (change)="onImageSelected($event)" name="profileImage" accept="image/*">
+      
       <div class="buttons">
         <button type="submit">{{ student.id ? 'Update' : 'Save' }}</button>
         <button (click)="goBack()">Cancel</button> 
