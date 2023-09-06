@@ -47,3 +47,21 @@
   background-color: blue;
   color: white;
 }
+.pagination{
+  margin-top: 40px;
+  margin-left : 40% ; 
+}
+.active{
+  color: white;
+  background-color: cadetblue;
+}
+.btnpage{
+  margin: 2px;
+  border-radius: 20px;
+  border: none;
+  padding: 3px 15px;
+}
+.btnpage:hover{
+  color: white;
+  background-color: cornflowerblue;
+}

@@ -41,7 +41,6 @@ export class StudentDetailsComponent implements OnInit{
     });
   }
   editstudent(studentId: string) {
-    debugger
     if (this.isAdmin||this.isStudent){
     this.router.navigate(['/edit', studentId]);}
     else{

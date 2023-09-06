@@ -43,25 +43,22 @@ export class AuthService {
   }
 
   getUsername() {
-    debugger;
     const name = localStorage.getItem('email');
     return name;
   }
   getUserRoleName() {
-    debugger;
     const role = localStorage.getItem('role');
     return role;
   }
   getRoles(): Observable<string[]> {
-    debugger;
     return this.http.get<string[]>(`${this.apiUrl}/getRoles`);
   }
+
   registerUser(registerUser: any): Observable<any> {
-    debugger;
     return this.http.post(`${this.apiUrl}/register`, registerUser);
   }
+
   createRole(roleName: string): Observable<any> {
-    debugger    
     return this.http.post(`${this.apiUrl}/CreateRole?roleName=${roleName}`, null);
   }  
 

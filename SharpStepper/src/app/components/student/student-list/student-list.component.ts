@@ -21,7 +21,7 @@ export class StudentListComponent implements OnInit {
   isAdmin: boolean;
   isStudent: boolean;
   currentPage: number = 1;
-  totalPages: number = 1;
+  totalPages: number = 0;
   totalPagesArray: number[] = [];
   displayedPages: number[] = [];
   constructor(private router: Router,public authService: AuthService,private studentservice: StudentService,private http: HttpClient){    
@@ -32,60 +32,42 @@ export class StudentListComponent implements OnInit {
     this.isAuthenticated = this.authService.isAuthenticated();
     this.loadStudents(this.currentPage);
   }
-
- /* loadStudents(page: number) {
-    // this.studentservice.getAllStudents().subscribe(async (students: Student[]) => {
-    //   for (const student of students) {
-    //     try {
-    //       // Fetch the image URL for students with a valid profileImage
-        
-    //       student.profileImage = await this.studentservice.getImageUrl(student.profileImage).toPromise() || 'D:\Assignment2\Tuitionclass.API\wwwroot\Uploads\Student\Banner_bg.jpg\image.png';
-    //     } catch (error) {
-    //       // Handle any errors that occur during image URL retrieval
-    //       console.error(`Error fetching image URL for student: ${error}`);
-    //       // Assign a default image URL or handle it as needed
-    //       student.profileImage = 'D:\Assignment2\Tuitionclass.API\wwwroot\Uploads\Student\Banner_bg.jpg\image.png';
-    //     }
-    //   }
-  
-    //   this.students = students;
-    //   console.log(this.students);
-    // });
-    this.studentservice.getAllStudents(page).subscribe(async (students: Student[]) => {
-      for (const student of students) {
-        try {
-          student.profileImage = await firstValueFrom(this.studentservice.getImageUrl(student.profileImage)) || '../../../../assets/images/Logo.png';
-
-        
-        } catch (error) {
-          console.error(`Error fetching image URL for student: ${error}`);
-          student.profileImage = '../../../../assets/images/Logo.png';
-        }
-      }
-  
-      this.students = students;
-      this.totalPages = response.totalPages || 1;
-      console.log(this.students);
-    });
-  }
-  onPageChange(page: number): void {
-    this.currentPage = page;
-    this.loadStudents(this.currentPage);
-  }*/
   
   loadStudents(page: number): void {
-    this.studentservice.getAllStudents(page).subscribe(
-      (response: any) => {
-        this.students = response.students;
-        this.totalPages = response.totalPages;
-        this.totalPagesArray = Array.from({ length: this.totalPages }, (_, i) => i + 1);
-        this.calculateDisplayedPages();
+    this.studentservice.getAllStudents(page).subscribe({
+      next: async (response: any) => {
+        try {
+          const students: Student[] = response.students;
+          for (const student of students) {
+            try {
+              const imageArrayBuffer = await firstValueFrom(this.studentservice.getImageUrl(student.profileImage));        
+              if (imageArrayBuffer) {
+                const imageBlob = new Blob([imageArrayBuffer], { type: 'image/png' }); // Adjust the type as needed
+                const imageUrl = URL.createObjectURL(imageBlob);
+                student.profileImage = imageUrl;
+              } else {
+                student.profileImage = '../../../../assets/images/Logo.png';
+              }
+            } catch (error) {
+              console.error(`Error fetching image URL for student: ${error}`);
+              student.profileImage = '../../../../assets/images/Logo.png';
+            }
+          }
+          this.students = students;
+          debugger
+          this.totalPages = response.totalPages;
+          this.totalPagesArray = Array.from({ length: this.totalPages }, (_, i) => i + 1);
+          this.calculateDisplayedPages();
+        } catch (error) {
+          console.error(`Error fetching student images: ${error}`);
+        }
       },
-      (error) => {
+      error: (error) => {
         console.error(`Error fetching students: ${error}`);
       }
-    );
-  }
+    });
+  }  
+  
   calculateDisplayedPages() {
     if (this.totalPages <= 3) {
       this.displayedPages = this.totalPagesArray;
@@ -97,10 +79,10 @@ export class StudentListComponent implements OnInit {
     this.currentPage = page;
     this.loadStudents(this.currentPage);
   }
-  // getImageUrl(imageFileName: string): Observable<string> {
-  //   debugger
-  //   return this.http.get<string>(`https://localhost:7032/api/Student/GetImage?imageFileName=${imageFileName}`);
-  // }
+  getImageUrl(imageFileName: string): Observable<string> {
+    debugger
+    return this.http.get<string>(`https://localhost:7032/api/Student/GetImage?imageFileName=${imageFileName}`);
+  }
   admission(){
     this.router.navigate(['/add']);
   }
@@ -109,7 +91,6 @@ export class StudentListComponent implements OnInit {
     this.router.navigate(['/edit', studentId]);
   }
   getstudentDetails(studentId: string) {
-    debugger
     this.router.navigate(['/details', studentId]);
   }
   deleteStudent(id: string) {

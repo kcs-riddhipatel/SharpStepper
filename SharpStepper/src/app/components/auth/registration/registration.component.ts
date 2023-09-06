@@ -34,8 +34,7 @@ export class RegistrationComponent {
   
       if (password && confirmPassword && password.value !== confirmPassword.value) {
         return { passwordMismatch: true };
-      }
-  
+      }  
       return null;
     };
   }
