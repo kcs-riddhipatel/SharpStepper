@@ -1,0 +1,78 @@
+.student-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .student-form h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+  
+  .student-form form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .student-form label {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  .student-form input {
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .student-form .buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+  }
+  
+  .student-form button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .student-form button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .student-form button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  .student-form button[type="submit"]:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .student-form button[type="button"] {
+    background-color: #ccc;
+    color: #333;
+  }
+  
+  .student-form button[type="button"]:hover {
+    background-color: #999;
+  }
+  .gender-inputs {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .form-check {
+    display: flex;
+    align-items: center;
+  }
+  .field_required{
+    color: red;
+  }

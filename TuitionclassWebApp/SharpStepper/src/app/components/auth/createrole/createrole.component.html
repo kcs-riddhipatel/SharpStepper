@@ -1,0 +1,12 @@
+<app-header></app-header>
+<div>
+  <h2>Create Role</h2>
+  <form (ngSubmit)="createRole()">
+    <label for="roleName">Role Name:</label>
+    <input type="text" id="roleName" name="roleName" [(ngModel)]="roleName" required>
+    <button type="submit">Create Role</button>
+  </form>
+  <button (click)="goBack()">Back to List</button>
+</div>
+
+<app-footer></app-footer>

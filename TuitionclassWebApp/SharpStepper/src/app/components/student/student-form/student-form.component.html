@@ -1,0 +1,74 @@
+<app-header></app-header>
+<div class="student-form">
+    <h2>{{ student.id ? 'Edit Student' : 'Add Student' }}</h2>
+    <form (ngSubmit)="onSaveStudent()">
+      <input type="hidden" id="id"  [(ngModel)]="student.id" name="id">
+      <label for="fname">FirstName:<span class="field_required"> *</span></label>
+      <input type="text" id="fname" [(ngModel)]="student.firstName" name="fname" required>
+      <span *ngIf="!student.firstName && formSubmitted" style="color: red;">FirstName is required.</span>
+      <span *ngIf="student.firstName.length > 20 && formSubmitted" style="color: red;">FirstName cannot exceed 20 characters.</span>
+
+      <label for="lname">LastName:<span class="field_required"> *</span></label>
+      <input type="text" id="lname" [(ngModel)]="student.lastName" name="lname" required>
+      <span *ngIf="!student.lastName && formSubmitted" style="color: red;">LastName is required.</span>
+      <span *ngIf="student.lastName.length > 20 && formSubmitted" style="color: red;">LastName cannot exceed 20 characters.</span>
+
+      <label for="email">Email:<span class="field_required"> *</span></label>
+      <input type="email" id="email" [(ngModel)]="student.email" name="email" required>
+      <span *ngIf="!student.email && formSubmitted" style="color: red;">Email is required.</span>
+      <span *ngIf="student.email && !student.email.match('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}')" style="color: red;">Invalid email format.</span>
+
+      <label for="phone">Phone:<span class="field_required"> *</span></label>
+      <input type="tel" id="phone" [(ngModel)]="student.mobile" name="phone" required>
+      <span *ngIf="!student.mobile && formSubmitted" style="color: red;">Phone is required.</span>
+      <span *ngIf="student.mobile && !student.mobile.toString().match('^[0-9]{1,10}$')" style="color: red;">Invalid phone format (digits only and max length 10).</span>
+
+      <label for="salary">Date of Birth:<span class="field_required"> *</span></label>
+      <input type="date" id="salary" [(ngModel)]="student.dob" name="salary" required>
+      <span *ngIf="!student.dob && formSubmitted" style="color: red;">Date of Birth is required.</span>
+
+      <label for="gender">Gender:<span class="field_required"> *</span></label>
+      <div class="gender-inputs">
+        <label>
+          <input
+            type="radio"
+            id="male"
+            value="M"
+            name="gender"
+            [(ngModel)]="student.gender"
+          />
+          Male
+        </label>
+        <label>
+          <input
+            type="radio"
+            id="other"
+            value="O"
+            name="gender"
+            [(ngModel)]="student.gender"
+          />
+          Other
+        </label>
+        <label>
+          <input
+            type="radio"
+            id="female"
+            value="F"
+            name="gender"
+            [(ngModel)]="student.gender"
+          />
+          Female
+        </label>
+      </div>
+      <span *ngIf="!student.gender && formSubmitted" style="color: red;">Gender is required.</span>
+
+      <label for="profileImage">Profile Image:</label>
+      <input type="file" id="profileImage"  [(ngModel)]="student.profileImage" (change)="onImageSelected($event)" name="profileImage" accept="image/*">
+      
+      <div class="buttons">
+        <button type="submit">{{ student.id ? 'Update' : 'Save' }}</button>
+        <button (click)="goBack()">Cancel</button> 
+      </div>
+    </form>
+  </div>  
+<app-footer></app-footer>

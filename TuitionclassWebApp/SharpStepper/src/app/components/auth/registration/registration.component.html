@@ -1,0 +1,48 @@
+<app-header></app-header>
+<br>
+<div>
+  <h2>Registration</h2>
+  <form [formGroup]="registerForm" (ngSubmit)="register()">
+    <label for="Username">Username:<span class="field_required"> *</span></label>
+    <input type="text" id="Username" formControlName="Username">
+    <span *ngIf="registerForm.get('Username')?.hasError('required') && registerForm.get('Username')?.touched" style="color: red;">
+      Username is required.
+    </span>
+  
+    <label for="Email">Email:<span class="field_required"> *</span></label>
+    <input type="email" id="Email" formControlName="Email">
+    <span *ngIf="registerForm.get('Email')?.hasError('required') && registerForm.get('Email')?.touched" style="color: red;">
+      Email is required.
+    </span>
+    <span *ngIf="registerForm.get('Email')?.hasError('email') && registerForm.get('Email')?.touched" style="color: red;">
+      Invalid email format.
+    </span>
+    
+  
+    <label for="Password">Password:<span class="field_required"> *</span></label>
+    <input type="password" id="Password" formControlName="Password">
+    <span *ngIf="registerForm.get('Password')?.hasError('required') && registerForm.get('Password')?.touched" style="color: red;">
+      Password is required.
+    </span>
+    <span *ngIf="registerForm.get('Password')?.hasError('minlength') && registerForm.get('Password')?.touched" style="color: red;">
+      Password must be at least 12 characters long.
+    </span>
+    <label for="ConfirmPassword">Confirm Password:<span class="field_required"> *</span></label>
+     <input type="password" id="ConfirmPassword" formControlName="ConfirmPassword">
+     <span *ngIf="registerForm.get('ConfirmPassword')?.hasError('required') && registerForm.get('ConfirmPassword')?.touched" style="color: red;">
+       Confirm Password is required.
+     </span>
+     <span *ngIf="registerForm.hasError('passwordMismatch') && registerForm.get('ConfirmPassword')?.touched" style="color: red;">
+      Password and Confirm Password must match.
+    </span>
+    <label for="role">Select a Role:<span class="field_required"> *</span></label>
+    <select formControlName="role">
+      <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+    </select>
+  
+    <button type="submit">Register</button>
+    <button type="button" (click)="goBack()">Back to List</button>
+  </form> 
+  
+
+<app-footer></app-footer>

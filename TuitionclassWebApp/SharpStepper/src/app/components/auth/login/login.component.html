@@ -1,0 +1,42 @@
+<div class="form">
+  <div class="form__box">
+    <div class="form__left">
+      <div class="form__padding">
+        <img
+          class="form__image"
+          src="https://i.pinimg.com/originals/8b/44/51/8b4451665d6b2139e29f29b51ffb1829.png"
+          alt="Student-Image"
+        />
+      </div>
+    </div>
+    <div class="form__right">
+      <div class="form__padding-right">
+        <form (ngSubmit)="onSubmit()">
+          <h1 class="form__title">Welcome Back!</h1>
+          <label for="Email">Email:</label>
+          <input
+            class="form__email"
+            type="text"
+            placeholder="abc@example.com"
+            type="text"
+            id="Email"
+            [(ngModel)]="email"
+            name="Email"
+            required
+          />
+          <label for="password">Password:</label>
+          <input
+            class="form__password"
+            type="password"
+            placeholder="******"
+            id="password"
+            [(ngModel)]="password"
+            name="password"
+            required
+          />
+          <input class="form__submit-btn" type="submit" value="Login" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

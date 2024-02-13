@@ -1,0 +1,61 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\Angular_Assignment2\\Tuitionclass.API\\wwwroot\\Uploads\\Student\\person1.jpg\\image.png",
+      "PackagePath": "staticwebassets\\Uploads\\Student\\person1.jpg\\image.png"
+    },
+    {
+      "Id": "D:\\Angular_Assignment2\\Tuitionclass.API\\wwwroot\\Uploads\\Student\\person10.jpg\\image.png",
+      "PackagePath": "staticwebassets\\Uploads\\Student\\person10.jpg\\image.png"
+    },
+    {
+      "Id": "D:\\Angular_Assignment2\\Tuitionclass.API\\wwwroot\\Uploads\\Student\\person11.jpg",
+      "PackagePath": "staticwebassets\\Uploads\\Student\\person11.jpg"
+    },
+    {
+      "Id": "D:\\Angular_Assignment2\\Tuitionclass.API\\wwwroot\\Uploads\\Student\\person2.jpg\\image.png",
+      "PackagePath": "staticwebassets\\Uploads\\Student\\person2.jpg\\image.png"
+    },
+    {
+      "Id": "D:\\Angular_Assignment2\\Tuitionclass.API\\wwwroot\\Uploads\\Student\\person3.jpg\\image.png",
+      "PackagePath": "staticwebassets\\Uploads\\Student\\person3.jpg\\image.png"
+    },
+    {
+      "Id": "D:\\Angular_Assignment2\\Tuitionclass.API\\wwwroot\\Uploads\\Student\\person4.jpg\\image.png",
+      "PackagePath": "staticwebassets\\Uploads\\Student\\person4.jpg\\image.png"
+    },
+    {
+      "Id": "D:\\Angular_Assignment2\\Tuitionclass.API\\wwwroot\\Uploads\\Student\\person5.jpg\\image.png",
+      "PackagePath": "staticwebassets\\Uploads\\Student\\person5.jpg\\image.png"
+    },
+    {
+      "Id": "D:\\Angular_Assignment2\\Tuitionclass.API\\wwwroot\\Uploads\\Student\\person7.jpg",
+      "PackagePath": "staticwebassets\\Uploads\\Student\\person7.jpg"
+    },
+    {
+      "Id": "D:\\Angular_Assignment2\\Tuitionclass.API\\wwwroot\\Uploads\\Student\\person8.jpg\\image.png",
+      "PackagePath": "staticwebassets\\Uploads\\Student\\person8.jpg\\image.png"
+    },
+    {
+      "Id": "D:\\Angular_Assignment2\\Tuitionclass.API\\wwwroot\\Uploads\\Student\\person9.jpg\\image.png",
+      "PackagePath": "staticwebassets\\Uploads\\Student\\person9.jpg\\image.png"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.Tuitionclass.API.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.Tuitionclass.API.props",
+      "PackagePath": "build\\Tuitionclass.API.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.Tuitionclass.API.props",
+      "PackagePath": "buildMultiTargeting\\Tuitionclass.API.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.Tuitionclass.API.props",
+      "PackagePath": "buildTransitive\\Tuitionclass.API.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

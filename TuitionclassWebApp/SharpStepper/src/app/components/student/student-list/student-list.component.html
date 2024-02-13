@@ -1,0 +1,73 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<app-header></app-header>
+<p class="admission" (click)="admission()"><marquee>Admission open for Year 2023-24 || Click for Registration</marquee></p>
+<button routerLink="/add" *ngIf="isAdmin" class="btn"><i class="fa fa-plus" style="font-size:15px"></i>Add student</button>
+  <div *ngIf="authService.isAuthenticated(); else loginTemplate" class="emplist-container">
+    <table class="student-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Fullname</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>DOB</th>
+          <th>Gender</th>
+          <th>ProfilePic</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of students">
+          <td>{{ student.id }}</td>
+          <td>{{ student.firstName + ' ' +student.lastName }} </td>      
+          <td>{{ student.email }}</td>
+          <td>{{ student.mobile }}</td>
+          <td>{{ student.dob | date:'dd-MM-yyyy'}}</td>
+          <td>{{ student.gender }}</td>
+          <td>
+            <img *ngIf="student.profileImage" [src]="student.profileImage" alt="Profile Pic" width="50">
+            <img *ngIf="!student.profileImage" src="../../../../assets/images/Logo.png" alt="Default Profile Pic" width="50">
+          </td>
+          <td>
+            <button *ngIf="isAdmin || isStudent" (click)="deleteStudent(student.id)"><i class="fa fa-trash-o" style="font-size:15px;color: red;"></i></button>
+            <button *ngIf="isAdmin || isStudent" (click)="editstudent(student.id)"><i class="fa fa-edit" style="font-size:15px;color: green;"></i></button> 
+            <button *ngIf="isAdmin || isStudent" (click)="getstudentDetails(student.id)"><i class="fa fa-eye" style="font-size:15px;color: skyblue;"></i></button> 
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="pagination">
+      <button [disabled]="currentPage === 1 || totalPages==0" (click)="onPageChange(currentPage - 1)" class="btnpage">
+        Previous
+      </button>
+  
+      <ng-container *ngIf="totalPages <= 3">
+        <button
+          *ngFor="let page of totalPagesArray"
+          [class.active]="page === currentPage"
+          (click)="onPageChange(page)"
+          class="btnpage">
+          {{ page }}
+        </button>
+      </ng-container>
+  
+      <ng-container *ngIf="totalPages > 3">
+        <button *ngFor="let page of displayedPages" [class.active]="page === currentPage" (click)="onPageChange(page)" class="btnpage">
+          {{ page }}
+        </button>
+        <span *ngIf="currentPage + 2 < totalPages">...</span>
+        <button *ngIf="currentPage + 2 < totalPages" (click)="onPageChange(totalPages - 1)" class="btnpage">{{ totalPages - 1 }}</button>
+        <button *ngIf="currentPage + 1 < totalPages" (click)="onPageChange(totalPages)" class="btnpage">{{ totalPages }}</button>
+      </ng-container>
+  
+      <button [disabled]="currentPage === totalPages || totalPages==0" (click)="onPageChange(currentPage + 1)" class="btnpage">
+        Next
+      </button>
+    </div>
+  </div>  
+  <ng-template #loginTemplate>
+    <p>Please login to access the student list.</p>
+  </ng-template>
+
+
+<app-footer></app-footer>
